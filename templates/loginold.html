@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}TJHSST Intranet Login{% endblock %}
+
+{% block header-title %}Login{% endblock %}
+
+{% block content %}
+<p>{{ login_message }}</p>
+<form action="/auth">
+<input name="username" disabled /><br />
+<input name="password" type="password" disabled /><br />
+<input type="submit" />
+</form>
+<span style='disclaimer'>
+	{% autoescape off %}
+		{{ login_disclaimer }}
+	{% endautoescape %}
+</span>
+{% endblock %}

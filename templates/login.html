@@ -1,0 +1,186 @@
+{% extends "public-base.html" %}
+
+{% load staticfiles %}
+{% block title %}TJ Intranet - Login{% endblock %}
+
+{% block js %}
+<script type='text/javascript'>
+$(document).ready(function() {
+	$('input[name=username]').focus()
+});
+</script>
+{% endblock %}
+
+{% block css %}
+<style>
+.header {
+	left: calc(50% - 125px);
+}
+
+.header-logo {
+	height: 46px;
+}
+
+.header-logo > span {
+	padding-left: 40px;
+}
+
+.header-content {
+	background-color: #c4d5ee;
+	left: 0;
+	width: 100%;
+	height: 38px;
+	z-index: -1;
+}
+
+body.white .header,
+body.white .header-logo,
+body.white .header-logo > span,
+body.white .header-content {
+	background: transparent;
+	border: 0;
+}
+
+div.subtitle {
+	font-size: 12px;
+	line-height: 0px;
+}
+
+.main {
+	width: 40%;
+	min-width: 500px;
+	left: 30%;
+	text-align: center;
+}
+
+form.loginform table {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+form.loginform td:first-child {
+	padding-right: 20px;
+}
+
+form.loginform td.submit, 
+form.loginform input.submit {
+	width: 100%;
+	padding: 10px;
+}
+
+.disclaimer {
+	width: 600px;
+	text-align: left;
+	position: absolute;
+	left: calc(50% - 300px);
+}
+</style>
+{% endblock %}
+
+{% block bodytag %} class='white'{% endblock %}
+
+{% block header-title %}
+	Welcome to TJ Intranet
+</span><br />
+<div class='subtitle'>{{login_message}}</div>
+{% endblock %}
+
+{% block left %}
+
+<div class='left-opt left-opt-home sel' href='/welcome'>
+    <span>login</span>
+</div>
+
+{% endblock %}
+{% block content %}
+	<form action='/auth/' method='post' name='loginform' class='loginform'>
+		{% csrf_token %}
+		<table>
+			<tr>
+				<td>
+					<label for='username'>Username</label>
+				</td>
+				<td>
+					<input type='text' name='username' size='30' value='' />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label for='password'>Password</label>
+				</td>
+				<td>
+					<input type='password' name='password' size='30' value='' />
+				</td>
+			</tr>
+			<tr>
+				<td colspan='2' class='submit'>
+					<input type='submit' name='submit' class='submit' value='Login' />
+				</td>
+			</tr>
+		</table>
+	</form>
+
+	<br />
+	<br />
+	<div class='disclaimer'>
+	{% autoescape off %}
+		{{ login_disclaimer }}
+	{% endautoescape %}
+	</div>
+
+
+{% endblock %}
+
+
+{% block main-schedule %}
+<div>
+	<table class='sched-tbl sched-tbl-5'>
+	    <tr class='sched-day'>
+	        <td>
+	            <span class='sched-prev sched-prev1'>←</span>
+	            Monday
+	            <span class='sched-next sched-next1'>→</span>
+	        </td>
+	        <td>
+	            <span class='sched-prev sched-prev2'>←</span>
+	            Tuesday
+	            <span class='sched-next sched-next2'>→</span>
+	        </td>
+	        <td class='sched-today sched-sel'>
+	            <span class='sched-prev sched-prev3'>←</span>
+	            Wednesday
+	            <span class='sched-next sched-next3'>→</span>
+	        </td>
+	        <td>
+	            <span class='sched-prev sched-prev4'>←</span>
+	            Thursday
+	            <span class='sched-next sched-next4'>→</span>
+	        </td>
+	        <td>
+	            <span class='sched-prev sched-prev5'>←</span>
+	            Friday
+	            <span class='sched-next sched-next5'>→</span>
+	        </td>
+	    </tr>
+	    <tr class='sched-info'>
+	        <td rel='2013-03-27'><div>
+	            <b>Anchor Day</b><br>Period 1: 8:30 - 9:15<br>Period 2: 9:25 - 10:05<br>Period 3: 10:15 - 10:55<br>Period 4: 11:05 - 11:45<br>Lunch: 11:45 - 12:35<br>Period 5: 12:35 - 1:15<br>Period 6: 1:25 - 2:05<br>Period 7: 2:15 - 2:55<br>Break: 2:55 - 3:10<br>Period 8: 3:10 - 3:50
+	        </div></td>
+	        <td><div>
+	            <b>Blue Day</b><br>Period 1: 8:30 - 10:05<br>Period 2: 10:15 - 11:45<br>Lunch: 11:45 - 12:30<br>Period 3: 12:30 - 2:05<br>Break: 2:05 - 2:20<br>Period 4: 2:20 - 3:50
+	        </div></td>
+	        <td class='sched-today sched-sel'><div>
+	            <b>Red Day</b><br>Period 5: 8:30 - 10:05<br>Period 6: 10:15 - 11:45<br>Lunch: 11:45 - 12:30<br>Period 7: 12:30 - 2:05<br>Break: 2:05 - 2:20<br>Period 8A: 2:20 - 3:00<br>Period 8B: 3:10 - 3:50
+	        </div></td>
+	        <td><div>
+	            <b>JLC Blue Day</b><br>JLC: 8:00 - 8:55<br>Period 1: 9:00 - 10:28<br>Period 2: 10:37 - 12:05<br>Lunch: 12:05 - 12:45<br>Period 3: 12:45 - 2:13<br>Break: 2:13 - 2:22<br>Period 4: 2:22 - 3:50
+	        </div></td>
+	        
+	        <td><div>
+	            <b>Red Day</b><br>Period 5: 8:30 - 10:05<br>Period 6: 10:15 - 11:45<br>Lunch: 11:45 - 12:30<br>Period 7: 12:30 - 2:05<br>Break: 2:05 - 2:20<br>Period 8A: 2:20 - 3:00<br>Period 8B: 3:10 - 3:50
+	        </div></td>
+	    </tr>
+    </table>
+</div>
+{% endblock %}

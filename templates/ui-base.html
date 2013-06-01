@@ -1,0 +1,95 @@
+{% comment %}
+Intranet3 UI Base Template
+--------------------------
+
+This contains the base UI for Intranet.
+Do NOT put block content in here! Put it in base.html!
+Do NOT extend this file, except for in base.html!
+You should be extending base.html, not this.
+
+{% endcomment %}
+{% load staticfiles %}
+
+<!doctype html>
+<html>
+<head>
+    <title>
+        {% block title %}
+        {% endblock %}
+    </title>
+    <link rel="icon" href="{% static "img/icon.png" %}" />
+    <link rel="shortcut icon" href="{% static "img/icon.png" %}" />
+    <link rel="canonical" href="{{ baseurl }}" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="Description" content="The TJ Intranet allows students at the Thomas Jefferson High School for Science and Technology to sign up for activities, access their school files and perform other tasks." />
+    <!-- mobile compatibility -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.25, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    
+    <link rel='stylesheet' type='text/css' href='{% static "css/base.css" %}' />
+    <!--link rel='stylesheet' type='text/css' href='css/eighth-legacy.css' /-->
+
+    <script type='text/javascript' src='{% static "js/jquery.js" %}'></script>
+    <!--script type='text/javascript' src='js/jquery.plugins.js'></script>
+    <script type='text/javascript' src='js/app.utils.js'></script>
+    <script type='text/javascript' src='js/app.base.js'></script>
+    <script type='text/javascript' src='js/app.ajax.js'></script>
+    <script type='text/javascript' src='js/app.sched.js'></script>
+    <script type='text/javascript' src='js/app.login.js'></script>
+    <script type='text/javascript' src='js/eighth-legacy.js'></script>
+    <script type='text/javascript'>
+    $(document).ready(app.document_ready);-->
+    {% block css %}
+    {% endblock %}
+
+    {% block js %}
+    {% endblock %}
+
+    {% block head %}
+    {% endblock %}
+</head>
+<body{% block bodytag %}{% endblock %}>
+    <div class='container'>
+        <div class='header'>
+            <div class='header-logo'>
+                <span title='DECIDE ON A NAME ALREADY'>intranet<sup onmouseover='this.innerHTML=4' onmouseout='this.innerHTML=3'>3</sup></span>
+            </div>
+            <div class='header-content'>
+                {% block header %}
+                {% endblock %}
+            </div>
+        </div>
+        <div class='left'>
+            {% block left %}
+            {% endblock %}
+        </div>
+
+        <div class='main'>
+            <div class='main-header'>
+                <span>
+                    {% block header-title %}
+                    {% endblock %}
+                </span>
+            </div>
+            
+            <div class='main-content'>
+                {% block content %}
+                
+                {% endblock %}
+            </div>
+
+        </div>
+        <style>
+
+        </style>
+        <div class='main-schedule main-home-schedule'>
+            {% block main-schedule %}
+            
+            {% endblock %}
+        </div>
+    </div>
+    {% block body %}
+
+    {% endblock %}
+</body>
+</html>
